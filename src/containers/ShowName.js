@@ -8,11 +8,11 @@ let ShowName = ({state, onRequestSuccess}) => {
   if (state.name !== '') {
     text = <Text style={styles.container}>Hello, {state.name}!</Text>
   }
-  fetch('http://localhost:5000/hello?name=ALLAHUARABARY').then(onRequestSuccess)
+  fetch('http://localhost:5000/api/v1/hello?name=ALLAHUARABARY').then(onRequestSuccess)
 
   return (
     <View>
-      <Text>{text}</Text>
+      <Text>{state.name}</Text>
     </View>
   )
 }

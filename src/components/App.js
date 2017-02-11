@@ -3,18 +3,12 @@ import {Text, StyleSheet} from 'react-native'
 import { Router, Scene } from 'react-native-router-flux'
 
 import Profile from './Profile'
-import Calendar from './Calendar'
-import FormCalendar from './FormCalendar'
+import Calendar from './calendar/Calendar'
+import FormCalendar from './calendar/FormCalendar'
 
 const TabIcon = ({ selected, title }) => (
   <Text style={{color: selected ? 'red' : 'black', fontSize: 18}}>{title}</Text>
   )
-// const TabImage = ({ selected, title }) => (
-//   <Image
-//     style={{width: 50, height: 50}}
-//     source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-//     />
-//   )
 
 export default class App extends Component {
   render () {

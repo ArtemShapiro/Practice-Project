@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import reducer from './reducer'
+import setCalendarEevent from './calendar'
+import { reducer as formReducer } from 'redux-form'
 
 const PracticeApp = combineReducers({
-  name: reducer
+  calendarEvents: setCalendarEevent,
+  form: formReducer
 })
 
 export default PracticeApp

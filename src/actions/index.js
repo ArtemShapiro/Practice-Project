@@ -1,6 +1,6 @@
-export const changeName = (name) => {
+export const addCalendarEevent = (event) => {
   return {
-    type: 'CHANGE_NAME',
-    name
+    type: 'ADD_CALENDAR_EVENT',
+    event
   }
 }

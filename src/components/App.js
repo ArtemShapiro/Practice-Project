@@ -5,16 +5,25 @@ import { Router, Scene } from 'react-native-router-flux'
 import Profile from './Profile'
 import Calendar from './calendar/Calendar'
 import FormCalendar from './calendar/FormCalendar'
+import SignIn from './authorization/SignIn'
+import SignUp from './authorization/SignUp'
 
 const TabIcon = ({ selected, title }) => (
   <Text style={{color: selected ? 'red' : 'black', fontSize: 18}}>{title}</Text>
   )
 
 export default class App extends Component {
+  componentWillMount () {
+    console.log(213)
+  }
+
   render () {
     return (
       <Router hideNavBar>
         <Scene key='root'>
+          <Scene key='sign_in' component={SignIn} />
+          <Scene key='sign_up' component={SignUp} />
+
           <Scene
             key='tabbar'
             tabs

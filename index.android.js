@@ -1,53 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
  import React, { Component } from 'react'
-// import 'jquery';
-// import 'bootstrap';
- import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  Text,
-  TextInput
-} from 'react-native'
+ import { Provider } from 'react-redux'
+ import { createStore } from 'redux'
 
- import ToastAndroid from './app/modules'
+ import App from './src/components/App'
+ import PracticeApp from './src/reducers/index'
+ import apiClient from './src/utilities'
+
+ import {AppRegistry} from 'react-native'
+
+ const store = createStore(PracticeApp)
+
+ apiClient.setGetStateFunction(store.getState)
+ apiClient.setDispatchFunction(store.dispatch)
 
  export default class PracticeProject extends Component {
-   constructor (props) {
-     super(props)
-     this.state = {text: ''}
-   }
-
    render () {
-     let text
-     if (this.state.text !== '') {
-       text = <Text style={styles.container}>Hello, {this.state.text}!</Text>
-     }
-
      return (
-       <View style={{padding: 10}}>
-         <TextInput
-           style={{height: 40}}
-           placeholder='Type your name'
-           onChangeText={(text) => this.setState({text})}
-        />
-         {text}
-         {ToastAndroid.show('Awesome', ToastAndroid.SHORT)}
-       </View>
+       <Provider store={store} >
+         <App />
+       </Provider>
      )
    }
 }
-
- const styles = StyleSheet.create({
-   container: {
-     padding: 10,
-     fontSize: 42
-   }
- })
 
  AppRegistry.registerComponent('PracticeProject', () => PracticeProject)

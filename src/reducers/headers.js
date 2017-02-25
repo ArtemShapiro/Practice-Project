@@ -1,7 +1,7 @@
 const setHeaders = (state = {}, action) => {
   switch (action.type) {
     case 'SET_HEADERS':
-      return action.header
+      return {...state, ...action.headers}
     default:
       return state
   }

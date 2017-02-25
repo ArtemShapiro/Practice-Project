@@ -3,8 +3,11 @@ import {Text, StyleSheet} from 'react-native'
 import { Router, Scene } from 'react-native-router-flux'
 
 import Profile from './Profile'
+
 import Calendar from './calendar/Calendar'
 import FormCalendar from './calendar/FormCalendar'
+import UpdateFormEvent from '../containers/calendar/UpdateFormEvent'
+
 import SignIn from './authorization/SignIn'
 import SignUp from './authorization/SignUp'
 
@@ -14,7 +17,7 @@ const TabIcon = ({ selected, title }) => (
 
 export default class App extends Component {
   componentWillMount () {
-    console.log(213)
+
   }
 
   render () {
@@ -36,6 +39,7 @@ export default class App extends Component {
             <Scene key='second' title='Calendar' icon={TabIcon}>
               <Scene key='calendar' component={Calendar} initial />
               <Scene key='formCalendar' component={FormCalendar} />
+              <Scene key='updateFormEvent' component={UpdateFormEvent} />
             </Scene>
           </Scene>
         </Scene>

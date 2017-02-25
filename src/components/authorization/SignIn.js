@@ -32,6 +32,15 @@ const renderInput = ({ input, label, meta: { touched, error }, ...custom }) => {
   )
 }
 
+const renderPassword = ({ input, label, meta: { touched, error }, ...custom }) => {
+  return (
+    <View>
+      <TextInput style={styles.input} secureTextEntry onChangeText={(value) => input.onChange(value)} placeholder={label} {...input} />
+      {touched && (error && <Text style={{color: 'red', fontSize: 15, textDecorationLine: 'underline'}}>{error}</Text>)}
+    </View>
+  )
+}
+
 let SignIn = ({handleSubmit, state: {formErrors}, submitSucceeded, dispatch}) => {
   return (
     <View style={styles.container}>
@@ -40,7 +49,7 @@ let SignIn = ({handleSubmit, state: {formErrors}, submitSucceeded, dispatch}) =>
       <View>
         {submitSucceeded && (formErrors.message && <Text style={{color: 'red', fontSize: 15, textDecorationLine: 'underline'}}>{formErrors.message}</Text>)}
         <Field name='email' component={renderInput} label='Email' />
-        <Field name='password' component={renderInput} label='Password' />
+        <Field name='password' component={renderPassword} label='Password' />
         <TouchableOpacity onPress={handleSubmit(submit)} >
           <Text style={[styles.button, {backgroundColor: 'blue'}]}>Submit</Text>
         </TouchableOpacity>

@@ -16,7 +16,7 @@ const submit = (values, dispatch) => {
   data.append('password', values.password)
   data.append('password_confirmation', values.passwordConfirmation)
 
-  apiClient.makeRequest('http://127.0.0.1:5000/api/v1/auth', {body: data, method: 'POST'}).then((responce) => {
+  apiClient.makeRequest('http://practice-project-backend.herokuapp.com/api/v1/auth', {body: data, method: 'POST'}).then((responce) => {
     if (responce.ok) {
       dispatch(clearFormError())
       return responce.json().then(json => { console.log(json); Actions.tabbar() })

@@ -18,6 +18,11 @@ export const deleteCalendarEvent = (id) => ({
   id
 })
 
+export const setActiveEvent = (event) => ({
+  type: 'SET_ACTIVE_EVENT',
+  event
+})
+
 export const setHeaders = (headers) => ({
   type: 'SET_HEADERS',
   headers: {

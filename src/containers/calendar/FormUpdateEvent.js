@@ -13,10 +13,10 @@ const submit = (id) => (values, dispatch) => {
 
   apiClient.makeRequest(`http://127.0.0.1:5000/api/v1/seasonal_allergies/${id}`, {body: data, method: 'PATCH'}).then(response => {
     if (response.ok) {
+      console.log('ok')
       dispatch(clearFormError())
       dispatch(updateCalendarEvent(values, id))
       Actions.pop()
-      console.log('ok')
       return
     }
     dispatch(setFormError('response', 'Data is incorrect!'))
@@ -26,9 +26,9 @@ const submit = (id) => (values, dispatch) => {
 const mapStateToProps = (state, ownProps) => ({
   state,
   ownProps,
-  onSubmitClick
+  onSubmitClick: submit
 })
 
-let UpdateFormEvent = connect(mapStateToProps)(FormUpdate)
+let FormUpdateEvent = connect(mapStateToProps)(FormUpdate)
 
-export default UpdateFormEvent
+export default FormUpdateEvent

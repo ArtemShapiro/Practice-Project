@@ -5,11 +5,11 @@ import { Router, Scene } from 'react-native-router-flux'
 import Profile from './Profile'
 
 import Calendar from './calendar/Calendar'
-import FormCalendar from './calendar/FormCalendar'
-import UpdateFormEvent from '../containers/calendar/UpdateFormEvent'
+import FormUpdateEvent from '../containers/calendar/FormUpdateEvent'
+import FormCreateEvent from '../containers/calendar/FormCreateEvent'
 
-import SignIn from './authorization/SignIn'
-import SignUp from './authorization/SignUp'
+import SignIn from '../containers/authorization/SignIn'
+import SignUp from '../containers/authorization/SignUp'
 
 const TabIcon = ({ selected, title }) => (
   <Text style={{color: selected ? 'red' : 'black', fontSize: 18}}>{title}</Text>
@@ -38,8 +38,8 @@ export default class App extends Component {
 
             <Scene key='second' title='Calendar' icon={TabIcon}>
               <Scene key='calendar' component={Calendar} initial />
-              <Scene key='formCalendar' component={FormCalendar} />
-              <Scene key='updateFormEvent' component={UpdateFormEvent} />
+              <Scene key='formCreateEvent' component={FormCreateEvent} />
+              <Scene key='formUpdateEvent' component={FormUpdateEvent} />
             </Scene>
           </Scene>
         </Scene>

@@ -26,8 +26,11 @@ const submit = (values, dispatch) => {
 
 const mapStateToProps = (state) => (
   {
-    state
+    state,
+    onSubmitClick: submit
   }
 )
 
-let formCreateEvent = connect(mapStateToProps)(FormCalendar)
+let FormCreateEvent = connect(mapStateToProps)(FormCreate)
+
+export default FormCreateEvent

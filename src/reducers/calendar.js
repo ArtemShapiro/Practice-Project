@@ -1,6 +1,6 @@
 import {filter} from 'lodash'
 
-const setCalendarEevent = (state = [], action) => {
+const calendarEevent = (state = [], action) => {
   switch (action.type) {
     case 'ADD_CALENDAR_EVENT':
       return [
@@ -23,4 +23,4 @@ const setCalendarEevent = (state = [], action) => {
   }
 }
 
-export default setCalendarEevent
+export default calendarEevent

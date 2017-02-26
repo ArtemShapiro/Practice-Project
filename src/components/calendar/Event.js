@@ -1,12 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-
 import {Actions} from 'react-native-router-flux'
 
-const Event = ({event, onDeleteClick}) => {
-  const click = () => Actions.updateFormEvent({event})
+const Event = ({event, onDeleteClick, onSetActiveClick}) => {
+  const click = () => Actions.formUpdateEvent({event})
   return (
     <View style={styles.container}>
+      <View style={{flex: 2}}>
+        <TouchableOpacity onPress={onSetActiveClick}>
+          <Text>Active</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.nameContainer}>
         <Text>{event.name}</Text>
       </View>
@@ -20,6 +25,7 @@ const Event = ({event, onDeleteClick}) => {
           <Text>Update</Text>
         </TouchableOpacity>
       </View>
+
       <View style={styles.actionsContainer}>
         <TouchableOpacity onPress={onDeleteClick}>
           <Text>Delete</Text>
@@ -39,17 +45,17 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 10
   },
   nameContainer: {
-    flex: 2
+    flex: 4
   },
   dateContainer: {
-    flex: 3
+    flex: 4
   },
   actionsContainer: {
-    flex: 1,
-    paddingLeft: 2
+    flex: 2
   }
 })
 

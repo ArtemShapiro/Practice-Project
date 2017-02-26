@@ -14,7 +14,7 @@ class RenderInput extends Component {
     return (
       <View>
         <TextInput style={styles.input} onChangeText={(value) => input.onChange(value)} placeholder={label} {...input} />
-        {touched && (error && <Text style={{color: 'red', fontSize: 15, textDecorationLine: 'underline'}}>{error}</Text>)}
+        {touched && (error && <Text style={{color: 'red', fontSize: 15, textAlign: 'center'}}>{error}</Text>)}
       </View>
     )
   }
@@ -23,9 +23,10 @@ class RenderInput extends Component {
 let Form = ({handleSubmit, state: {formErrors}, ownProps, submitSucceeded, dispatch, onSubmitClick}) => {
   return (
     <View style={styles.container}>
-      <Text>Update Event</Text>
+      <Text style={styles.header}>Update Event</Text>
+
       <View>
-        {submitSucceeded && (formErrors.message && <Text style={{color: 'red', fontSize: 15, textDecorationLine: 'underline'}}>{formErrors.message}</Text>)}
+        {submitSucceeded && (formErrors.message && <Text style={{color: 'red', fontSize: 15, textAlign: 'center'}}>{formErrors.message}</Text>)}
 
         <View style={styles.formGroup}>
           <Text>Name of allergic:</Text>
@@ -43,7 +44,7 @@ let Form = ({handleSubmit, state: {formErrors}, ownProps, submitSucceeded, dispa
         </View>
 
         <TouchableOpacity onPress={handleSubmit(onSubmitClick(ownProps.event.id))}>
-          <Text style={[styles.button, {backgroundColor: 'blue'}]}>Submit</Text>
+          <Text style={[styles.button, {backgroundColor: '#1e90ff'}]}>Submit</Text>
         </TouchableOpacity>
       </View>
       <Text style={[styles.button, {backgroundColor: 'red'}]} onPress={Actions.pop}>Cancel</Text>
@@ -52,6 +53,9 @@ let Form = ({handleSubmit, state: {formErrors}, ownProps, submitSucceeded, dispa
 }
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 20
+  },
   centerText: {
     textAlign: 'center',
     fontSize: 20

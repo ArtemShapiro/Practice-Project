@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { View, ScrollView, ListView, StyleSheet } from 'react-native'
+import { View, ScrollView, ListView, StyleSheet, Text } from 'react-native'
 
 import Event from '../../components/calendar/Event'
-import {addCalendarEevents, deleteCalendarEvent} from '../../actions'
+import {addCalendarEevents, deleteCalendarEvent, setActiveEvent} from '../../actions'
 import apiClient from '../../utilities'
 
 class EventsList extends Component {
@@ -25,7 +25,7 @@ class EventsList extends Component {
           <ListView
             enableEmptySections
             dataSource={calendarEvents}
-            renderRow={event => <Event event={event} onDeleteClick={() => this.props.onDeleteClick(event.id)} />}
+            renderRow={event => <Event event={event} onDeleteClick={() => this.props.onDeleteClick(event.id)} onSetActiveClick={() => this.props.onSetActiveClick(event)} />}
           />
         </ScrollView>
       </View>
@@ -39,7 +39,7 @@ const style = StyleSheet.create({
   }
 })
 
-const mapToStateProps = (state) => (
+const mapStateToProps = (state) => (
   {
     state
   }
@@ -55,10 +55,13 @@ const mapDispatchToProps = (dispatch) => {
         }
       })
     },
+    onSetActiveClick: (event) => {
+      dispatch(setActiveEvent(event))
+    },
     dispatch
   }
 }
 
-const eventsList = connect(mapToStateProps, mapDispatchToProps)(EventsList)
+const eventsList = connect(mapStateToProps, mapDispatchToProps)(EventsList)
 
 export default eventsList

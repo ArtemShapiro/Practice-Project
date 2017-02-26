@@ -9,8 +9,12 @@ class ApiClient {
   }
 
   makeRequest (url, options) {
-    return fetch(url, {...options, headers: this.getState().headers}).then(response => {
-      this.dispatch(setHeaders(response.headers.map))
+    const headers = this.getState().headers
+    return fetch(url, {...options, headers: headers}).then(response => {
+      console.log(response)
+      if (response.headers.map.uid) {
+        this.dispatch(setHeaders(response.headers.map))
+      }
       return response
     })
   }
